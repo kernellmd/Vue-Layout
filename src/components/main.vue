@@ -2,12 +2,12 @@
     <div id="app">
         <mu-appbar>
             <div class="title">
-                Vue-Layout
-                <mu-badge class="description" content="可视化布局 " color="#f06292" />
+                基于Vue.js框架的Web前端开发工具
+                <mu-badge class="description" content="Drag-to-Code" color="#f06292" />
             </div>
             <mu-icon-button icon="share" slot="right" @click="share.open=true" />
             <mu-icon-button icon="settings" slot="right" @click="setting.open=true" />
-            <mu-icon-button icon=":iconfont icon-github" slot="right" href="https://github.com/jaweii/Vue-Layout" /> 
+            <!-- <mu-icon-button icon=":iconfont icon-github" slot="right" href="https://github.com/jaweii/Vue-Layout" /> -->
         </mu-appbar>
         <mu-row class="main-content">
             <mu-col class="attributes" :width="width.attr" :tablet="width.attr" :desktop="width.attr">
@@ -24,7 +24,7 @@
                 <component-tree v-if="selectField.value==='组件树'" class="component-tree" :components="$store.state.components.filter(c=>!c.parentId)" />
                 <div class="attributes-bottom" v-if="current.info">
                     <mu-flat-button label="UI文档" @click="openUiDocument" />
-                    <mu-flat-button label="操作" @click="oprate" />
+                    <mu-flat-button label="操作" @click="operate" />
                 </div>
             </mu-col>
             <mu-col class="preview" :width="width.preview" :tablet="width.preview" :desktop="width.preview">
@@ -34,12 +34,14 @@
                 <components ref="components" />
             </mu-col>
         </mu-row>
+
         <mu-dialog :open="setting.open" @close="setting.open=false" title="设置" scrollable>
             <br>
             <mu-checkbox label="选中边框效果" v-model="setting.selectEffect" @change="setSelectEffect" />
             <br/>
             <mu-flat-button primary label="关闭" @click="setting.open=false" slot="actions" />
         </mu-dialog>
+
         <mu-dialog :open="share.open" @close="share.open=false" title="分享当前布局" scrollable>
             <br>
             <mu-flat-button label="点击生成" @click="createShare" v-if="!share.url" />
@@ -49,6 +51,7 @@
             <br/>
             <mu-flat-button primary label="关闭" @click="share.open=false" slot="actions" />
         </mu-dialog>
+
     </div>
 </template>
 <script>
@@ -64,14 +67,17 @@ export default {
                 open: false,
                 selectEffect: true
             },
+
             share: {
                 open: false,
                 url: '',
                 experience: ''
             },
+
             selectField: {
                 value: '属性'
             }
+
         }
     },
     mounted() {
@@ -119,7 +125,7 @@ export default {
             let el = document.getElementById(this.parentComponent.info.id)
             el.click()
         },
-        oprate(e) {
+        operate(e) {
             // let components = await this.$store.dispatch('delComponent', this.current.info.id)
             // this.$refs.preview.fresh()
             this.$refs.preview.rightClick(e)

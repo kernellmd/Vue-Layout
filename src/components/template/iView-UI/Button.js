@@ -57,7 +57,7 @@ var handle = function(_attr, _slots) {
 
     //获取插槽模板内容
     var subContent = getSlotContent(slots)
-        //设置当前组件的slot
+    //设置当前组件的slot
     if (attributes.slot && attributes.slot !== 'default') {
         attributes.slot = {
             type: 'text',
@@ -72,7 +72,7 @@ var handle = function(_attr, _slots) {
 
     //字符串模板操作
     let stringAttr = getStringTypeAttr(attributes)
-    let template = `<Button 
+    let template = `<Button
                         ${stringAttr}>
                         ${subContent||attributes.label.value}
                     </Button>`

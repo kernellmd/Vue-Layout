@@ -69,7 +69,6 @@ var handle = function(_attr, _slots) {
                 type:'number',
                 value:''
             }
-
         },
         slots = {
             default: []
@@ -100,7 +99,7 @@ var handle = function(_attr, _slots) {
 
     //字符串模板操作
     let stringAttr = getStringTypeAttr(attributes)
-    let template = `<mu-flat-button 
+    let template = `<mu-flat-button
                         ${stringAttr}>
                         ${subContent}
                     </mu-flat-button>`

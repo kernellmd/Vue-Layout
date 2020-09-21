@@ -36,13 +36,12 @@ const store = new Vuex.Store({
             //保存本地
             localStorage.store = JSON.stringify(state)
 
-
         }
     },
     actions: {
         delComponent(context, id) {
             //删除前备份一份
-            context.commit('setState', { backupComponents: JSON.parse(JSON.stringify(context.state.components)) })
+            context.commit('setState',{ backupComponents: JSON.parse(JSON.stringify(context.state.components)) })
 
             let components = context.state.components
             let index = components.findIndex(c => c.info.id === id)
@@ -52,7 +51,7 @@ const store = new Vuex.Store({
                 let parent = components.find(c => c.info.id === component.parentId)
                 let slot = parent.slots[component.slot || component.attributes.slot || 'default']
                 let i = slot.findIndex(item => item.id === component.info.id)
-                    //删除
+                //删除
                 slot.splice(i, 1)
 
                 //递归获取最父级组件

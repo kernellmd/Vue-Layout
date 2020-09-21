@@ -182,12 +182,12 @@ export default {
         dragOver(e) {
             e.preventDefault()
         },
-        drop(e) { //松开拖放,e是容器元素
+        drop(e) {//松开拖放,e是容器元素
 
             //CODE视图的文字拖动也会触发此事件，这里屏蔽掉
             if (e.target.className.indexOf('sound-code') !== -1 || e.target.className.indexOf('hljs') !== -1)
                 return
-
+            //不包含preview
             let isNest = e.target.className.indexOf('preview') === -1 && e.target.id !== 'placeholder'
             let info = JSON.parse(e.dataTransfer.getData('info'))
             info.id = guid()
@@ -215,8 +215,9 @@ export default {
                 selectSlot.then(slot => {
                     let components = JSON.parse(JSON.stringify(this.components))
                     let index = components.findIndex(item => item.info.id === this.current.info.id)
-                        //嵌套模板
-                    let nestComponent = getTemplate(info, { //传入{slot}会给获取到的模板添加slot="xxx"
+                    //嵌套模板
+                    let nestComponent = getTemplate(info, {
+                      //传入{slot}会给获取到的模板添加slot="xxx"
                         slot
                     })
 
