@@ -20,8 +20,15 @@ Vue.use(mint)
 //Muse-UI
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
+import 'muse-ui/dist/theme-carbon.css' // 使用 carbon 主题
 // import '@/assets/css/theme-dark.css'
 Vue.use(MuseUI)
+
+//Element-UI
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+// import '@/assets/css/theme-dark.css'
+Vue.use(ElementUI)
 
 //为代码文本提供高亮、缩进
 import VueHighlightJS from 'vue-highlightjs'

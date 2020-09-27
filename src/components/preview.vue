@@ -6,16 +6,19 @@
                 <mu-sub-header style="display:inline;">{{showType}}</mu-sub-header>
                 <mu-icon-button style="float:right;" icon="fullscreen" tooltip="全屏" @click="fullScreen" />
                 <mu-icon-button style="float:right;" icon="delete" tooltip="清空" @click="empty" />
-                <mu-icon-menu style="float:right;" icon="stay_current_portrait" tooltip="视图" :targetOrigin="{vertical: 'bottom',horizontal: 'left'}">
+                <!-- <mu-icon-menu style="float:right;" icon="stay_current_portrait" tooltip="视图" :targetOrigin="{vertical: 'bottom',horizontal: 'left'}">
                     <mu-menu-item title="调整比例" @click="setWidth" />
                     <mu-menu-item :title="previewMode==='pc'?'手机模式':'PC模式'" @click="previewMode=previewMode==='pc'?'mobile':'pc'" />
-                </mu-icon-menu>
+                </mu-icon-menu> -->
                 <mu-icon-button style="float:right;" icon=":iconfont icon-css" tooltip="编辑样式" @click="editStyle" />
                 <mu-icon-button style="float:right;" icon="code" tooltip="查看代码" @click="showCode" />
                 <mu-icon-button v-if="$store.state.backupComponents.length" style="float:right;" icon="undo" tooltip="撤销" @click="undo" />
             </div>
             <mu-content-block :class="{'content':true,'active':showType!=='预览'}">
                 <pre v-show="showType==='CODE'" v-highlightjs="getSource(components)"><code class="html"></code></pre>
+                <!-- <textarea v-show="showType==='CODE'"  style="width:500px;height:700px">
+                  {{getSource(components) }}
+                </textarea> -->
                 <textarea v-show="showType==='编辑样式'" class="css-editor" placeholder=".vue-layout{ ... }" v-model="css"></textarea>
             </mu-content-block>
         </mu-paper>
@@ -257,7 +260,7 @@ export default {
                 })
 
             } else { //非嵌套操作
-                let id = guid()
+                // let id = guid()
                 component = getTemplate(info)
                 if (!component.template)
                     throw '没有这个组件的模板'
@@ -307,8 +310,6 @@ export default {
                 this.components = components
                 this.mount()
             }, 0)
-
-
         },
         getComponentNode(node) {
             if (node && node.getAttribute('data-component-active') !== null)

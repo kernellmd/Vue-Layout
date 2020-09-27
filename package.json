@@ -1,8 +1,8 @@
 {
-  "name": "Vue-Layout",
+  "name": "my-graduation-design",
   "version": "1.0.2",
   "description": "vue可视化布局",
-  "author": "jawei <1005945485@qq.com>",
+  "author": "liuqiwei",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -15,6 +15,7 @@
   "dependencies": {
     "codemirror": "^5.27.4",
     "dragula": "^3.7.2",
+    "element-ui": "^2.13.2",
     "iview": "^2.2.0",
     "jotted": "^1.5.1",
     "leancloud-storage": "^3.1.0",

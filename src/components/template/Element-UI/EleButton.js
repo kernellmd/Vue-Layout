@@ -2,27 +2,27 @@ import { getTemplate, getSlotContent, getStringTypeAttr } from '@/components/tem
 var handle = function(_attr, _slots) {
     //定义默认属性
     let attributes = {
-            label: {
-                type: 'text',
-                value: '按钮'
-            },
+
             plain:{
                 type:'boolean',
-                value:''
+                value:'false'
+            },
+            round:{
+                type:'boolean',
+                value:'false'
             },
             type:{
                 type:'selection',
-                items:['default','primary','danger'],
-                value:'default'
+                items:['success','primary','danger','info','text'],
+                value:'success'
             },
             size:{
                 type:'selection',
-                items:['small','normal','large'],
+                items:['small','medium','mini'],
                 value:''
             },
             icon:{
-                type:'selection',
-                items:['more','back'],
+                type:'icon',
                 value:''
             }
         },
@@ -50,18 +50,16 @@ var handle = function(_attr, _slots) {
     } else {
         attributes.slot = {
             type: 'text',
-            value: ''
+            value: 'element按钮'
         }
     }
 
     //字符串模板操作
     let stringAttr = getStringTypeAttr(attributes)
-    let template = `<mt-button
+    let template = `<el-button
                         ${stringAttr}>${subContent}
-                            ${attributes.label.value}
-                        </mt-button>`
-        //删除自定义非ui属性
-    template = template.replace(`:label="${attributes.label.value}"`, '')
+                        </el-button>`
+                        
     return { template, attributes, slots }
 }
 export default handle

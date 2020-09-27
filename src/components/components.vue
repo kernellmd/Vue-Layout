@@ -6,15 +6,24 @@
                 </mu-menu-item>
                 <mu-menu-item title="Mint-UI" value="Mint-UI">
                 </mu-menu-item>
-                <mu-menu-item title="iView-UI" value="iView-UI">
+                <!-- <mu-menu-item title="iView-UI" value="iView-UI">
                 </mu-menu-item>
                 <mu-menu-item title="Element-UI" value="Element-UI">
                 </mu-menu-item>
                 <mu-menu-item title="通用" value="Common">
-                </mu-menu-item>
+                </mu-menu-item> -->
             </mu-select-field>
             <mu-sub-header style="white-space:nowrap;">- 组件</mu-sub-header>
         </mu-content-block>
+        <div v-if="activeUI === 'Element-UI'">
+            <ul class="components-list">
+
+                <li draggable="true" @dragstart="dragStart" data-name="EleButton">
+                    <EleButton />
+                </li>
+
+            </ul>
+        </div>
         <div v-if="activeUI === 'Muse-UI'">
             <ul class="components-list">
                 <!-- 导航栏 -->
@@ -115,10 +124,10 @@
                 <li draggable="true" @dragstart="dragStart" data-name="Card">
                     <card />
                 </li>
-                <!--                 
+                <!--
                 <li draggable="true" @dragstart="dragStart" data-name="Back Top">
                     <backTop/>
-                </li> 
+                </li>
                 -->
             </ul>
         </div>
@@ -215,15 +224,7 @@
                 </li>
             </ul>
         </div>
-        <div v-if="activeUI === 'Element-UI'">
-            <ul class="components-list">
-                <!--                 
-                <li draggable="true" @dragstart="dragStart" data-name="Header">
-                    <mt-header fixed title="Header"></mt-header>
-                </li> 
-                -->
-            </ul>
-        </div>
+
         <div v-if="activeUI==='Common'">
             <ul class="components-list">
                 <li draggable="true" @dragstart="dragStart" data-name="Text">
@@ -249,6 +250,7 @@
 import museUiList from './list/muse-ui'
 import mintUiList from './list/mint-ui'
 import iViewUiList from './list/iview-ui'
+import elementUiList from "./list/element-ui";
 export default {
     name: 'components',
     data() {
@@ -297,7 +299,8 @@ export default {
     components: {
         ...museUiList,
         ...mintUiList,
-        ...iViewUiList
+        ...iViewUiList,
+        ...elementUiList
     }
 }
 </script>

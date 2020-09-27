@@ -96,7 +96,6 @@ var obj = {
     ['Card Text']:CardText,
     ['Card Title']:CardTitle,
     ['Sub Header']:SubHeader
-
 }
 
 export default obj
