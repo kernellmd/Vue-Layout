@@ -24,8 +24,9 @@
         </mu-paper>
         <!-- 预览视图 -->
         <div ref="preview" v-show="previewMode==='pc'" class="preview-area" @click="clickPreview" @contextmenu="rightClick" @keyup.delete="del">
-            <div v-if="!item.parentId" :id="item.info.id" v-for="(item,index) in components"></div>
+              <div v-if="!item.parentId" :id="item.info.id" v-for="(item,index) in components"></div>
         </div>
+
         <iframe src="./#/preview/mobile" class="preview-mobile" v-if="previewMode==='mobile'"></iframe>
         <mu-content-block class="preview-tip" v-if="components.length===0">
             试试拖拽组件进来
@@ -50,7 +51,11 @@
                 <mu-menu-item title="删除" @click="del" />
             </mu-menu>
         </mu-popover>
+        <!-- <div style="background-color:#f00;width:300px;height:100px;float: left;">
+          <span>daima</span>
+        </div> -->
     </section>
+
 </template>
 <script>
 import mount from './mount'
@@ -254,7 +259,7 @@ export default {
 
                     components[topIndex] = topComponent
                     components[index] = mergeDeep(components[index], component)
-                        //更新模板
+                    //更新模板
                     this.components = components
                     this.mount()
                 })

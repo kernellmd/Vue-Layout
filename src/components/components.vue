@@ -1,6 +1,7 @@
 <template>
-    <section>
+    <section style="background-color:#ccffff;">
         <mu-content-block style="display:flex;">
+          <mu-sub-header >组件库：</mu-sub-header>
             <mu-select-field :value="activeUI" @change="handleTabChange" autoWidth>
                 <mu-menu-item title="Muse-UI" value="Muse-UI">
                 </mu-menu-item>
@@ -13,7 +14,7 @@
                 <mu-menu-item title="通用" value="Common">
                 </mu-menu-item> -->
             </mu-select-field>
-            <mu-sub-header style="white-space:nowrap;">- 组件</mu-sub-header>
+
         </mu-content-block>
         <div v-if="activeUI === 'Element-UI'">
             <ul class="components-list">
@@ -26,17 +27,22 @@
         </div>
         <div v-if="activeUI === 'Muse-UI'">
             <ul class="components-list">
-                <!-- 导航栏 -->
-                <li draggable="true" @dragstart="dragStart" data-name="App Bar">
-                    <appbar />
-                </li>
+                <!-- <mu-appbar style="width: 100%; height: 40px;background-color:#5b5d61;" title="组件属性设置"></mu-appbar> -->
+
+                <mu-chip class="demo-chip" color="green">布局组件</mu-chip>
                 <!-- 栅格布局 -->
                 <li draggable="true" @dragstart="dragStart" data-name="Grid">
                     <shanGe />
                 </li>
-                <li draggable="true" @dragstart="dragStart" data-name="Text Field">
-                    <textField />
+
+                <!-- 导航栏 -->
+                <li draggable="true" @dragstart="dragStart" data-name="App Bar">
+                    <appbar />
                 </li>
+
+                <mu-divider style="background-color:#cc33ff;"></mu-divider>
+                <mu-chip class="demo-chip" color="#00ccff">按钮组件</mu-chip>
+
                 <li draggable="true" @dragstart="dragStart" data-name="Flat Button">
                     <FlatButton />
                 </li>
@@ -46,12 +52,15 @@
                 <li draggable="true" @dragstart="dragStart" data-name="Icon Button">
                     <iconButton />
                 </li>
-                <li draggable="true" @dragstart="dragStart" data-name="Icon">
-                    <icon />
-                </li>
+
                 <li draggable="true" @dragstart="dragStart" data-name="Floating Action Button">
                     <floatingActionButton />
                 </li>
+                <mu-divider style="background-color:#cc33ff;margin-bottom:10px;"></mu-divider>
+                <mu-chip class="demo-chip" color="#cc0099">图标组件</mu-chip>
+                 <li draggable="true" @dragstart="dragStart" data-name="Icon">
+                    <icon />
+                 </li>
                 <li draggable="true" @dragstart="dragStart" data-name="Avatar">
                     <avatar />
                 </li>
@@ -61,6 +70,8 @@
                 <li draggable="true" @dragstart="dragStart" data-name="Card Header">
                     <cardHeader />
                 </li>
+                <mu-divider style="background-color:#ff5050;margin-bottom:10px;"></mu-divider>
+                <mu-chip class="demo-chip" color="#00ccff">列表组件</mu-chip>
                 <li draggable="true" @dragstart="dragStart" data-name="Sub Header">
                     <subHeader />
                 </li>
@@ -73,23 +84,18 @@
                 <li draggable="true" @dragstart="dragStart" data-name="Table">
                     <grid />
                 </li>
+                <li draggable="true" @dragstart="dragStart" data-name="Pagination">
+                    <pagination/>
+                </li>
+
+                <mu-divider style="background-color:#ff5050;margin-bottom:10px;"></mu-divider>
+                <mu-chip class="demo-chip" color="#ffcc00">选择组件</mu-chip>
+
                 <li draggable="true" @dragstart="dragStart" data-name="Date Picker">
                     <datePicker />
                 </li>
                 <li draggable="true" @dragstart="dragStart" data-name="Time Picker">
                     <timePicker/>
-                </li>
-                <li draggable="true" @dragstart="dragStart" data-name="Badge">
-                    <badge/>
-                </li>
-                <li draggable="true" @dragstart="dragStart" data-name="Bottom Nav">
-                    <navigation/>
-                </li>
-                <li draggable="true" @dragstart="dragStart" data-name="Tabs">
-                    <tab/>
-                </li>
-                <li draggable="true" @dragstart="dragStart" data-name="Breadcrumb">
-                    <breadcrumb/>
                 </li>
                 <li draggable="true" @dragstart="dragStart" data-name="Checkbox">
                     <checkBox />
@@ -103,12 +109,32 @@
                 <li draggable="true" @dragstart="dragStart" data-name="Select Field">
                     <selectField/>
                 </li>
+
+                <mu-divider style="background-color:#ff5050;margin-bottom:10px;"></mu-divider>
+                <mu-chip class="demo-chip" color="#990033">其他组件</mu-chip>
+
+                <li draggable="true" @dragstart="dragStart" data-name="Badge">
+                    <badge/>
+                </li>
+                <li draggable="true" @dragstart="dragStart" data-name="Bottom Nav">
+                    <navigation/>
+                </li>
+                <li draggable="true" @dragstart="dragStart" data-name="Tabs">
+                    <tab/>
+                </li>
+                <li draggable="true" @dragstart="dragStart" data-name="Breadcrumb">
+                    <breadcrumb/>
+                </li>
+
+                <li draggable="true" @dragstart="dragStart" data-name="Text Field">
+                    <textField />
+                </li>
+
+
                 <li draggable="true" @dragstart="dragStart" data-name="Paper">
                     <paper/>
                 </li>
-                <li draggable="true" @dragstart="dragStart" data-name="Pagination">
-                    <pagination/>
-                </li>
+
                 <li draggable="true" @dragstart="dragStart" data-name="Slider">
                     <slider/>
                 </li>
@@ -121,6 +147,10 @@
                 <li draggable="true" @dragstart="dragStart" data-name="Circular Progress">
                     <circularProgress />
                 </li>
+
+                <mu-divider style="background-color:#ff5050;margin-bottom:10px;"></mu-divider>
+                <mu-chip class="demo-chip" color="#cc00ff">组合组件</mu-chip>
+
                 <li draggable="true" @dragstart="dragStart" data-name="Card">
                     <card />
                 </li>

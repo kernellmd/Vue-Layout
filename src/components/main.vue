@@ -1,37 +1,45 @@
 <template>
     <div id="app">
-        <mu-appbar>
+        <mu-appbar style="background-color: #3399ff;">
             <div class="title">
                 基于Vue.js框架的Web前端开发工具
-                <mu-badge class="description" content="Drag-to-Code" color="#f06292" />
+                <!-- <mu-badge class="description" content="Drag-to-Code" color="#f06292" /> -->
             </div>
-            <mu-icon-button icon="share" slot="right" @click="share.open=true" />
-            <mu-icon-button icon="settings" slot="right" @click="setting.open=true" />
+            <!-- <mu-icon-button icon="share" slot="right" @click="share.open=true" /> -->
+            <!-- <mu-icon-button icon="settings" slot="right" @click="setting.open=true" /> -->
             <!-- <mu-icon-button icon=":iconfont icon-github" slot="right" href="https://github.com/jaweii/Vue-Layout" /> -->
         </mu-appbar>
         <mu-row class="main-content">
+            <mu-col class="components" :width="width.components" :tablet="width.components" :desktop="width.components">
+              <mu-appbar style="width: 100%; height: 40px;background-color:#5b5d61;" title="组件选择"></mu-appbar>
+                <components ref="components" />
+            </mu-col>
+
+            <mu-col class="preview" :width="width.preview" :tablet="width.preview" :desktop="width.preview">
+                <preview ref="preview" />
+            </mu-col>
+
             <mu-col class="attributes" :width="width.attr" :tablet="width.attr" :desktop="width.attr">
-                <mu-sub-header class="header">
-                    <mu-select-field class="select-field" autoWidth v-model="selectField.value">
-                        <mu-menu-item title="属性" value="属性">
+              <mu-appbar style="width: 100%; height: 40px;background-color:#5b5d61;" title="组件属性设置"></mu-appbar>
+                <mu-sub-header style="background-color:#ccffff;" class="header">
+
+                    <!-- <mu-select-field class="select-field" autoWidth v-model="selectField.value">
+                        <mu-menu-item title="组件属性" value="属性">
                         </mu-menu-item>
                         <mu-menu-item title="组件树" value="组件树">
                         </mu-menu-item>
-                    </mu-select-field>
-                    <span><a class="parent-component" v-if="parentComponent" @click="switchComponent">┡ {{parentComponent.info.name}}</a> {{current.info?' - '+current.info.name:''}}</span>
+                    </mu-select-field> -->
+                    <div style="border-bottom:2px solid #ff3300"><span>组件：</span></div>
+                    <span><a class="parent-component" v-if="parentComponent" @click="switchComponent"> {{parentComponent.info.name}}</a> {{ current.info?' - '+current.info.name:'' }}</span>
                 </mu-sub-header>
+
                 <attributes v-if="selectField.value==='属性'" class="attributes-content" />
+
                 <component-tree v-if="selectField.value==='组件树'" class="component-tree" :components="$store.state.components.filter(c=>!c.parentId)" />
                 <div class="attributes-bottom" v-if="current.info">
                     <mu-flat-button label="UI文档" @click="openUiDocument" />
                     <mu-flat-button label="操作" @click="operate" />
                 </div>
-            </mu-col>
-            <mu-col class="preview" :width="width.preview" :tablet="width.preview" :desktop="width.preview">
-                <preview ref="preview" />
-            </mu-col>
-            <mu-col class="components" :width="width.components" :tablet="width.components" :desktop="width.components">
-                <components ref="components" />
             </mu-col>
         </mu-row>
 
@@ -216,10 +224,12 @@ export default {
 }
 
 .title {
-    font-family: Consolas, Liberation Mono, Menlo, Courier, monospace;
-    .description {
-        vertical-align: super;
-    }
+  text-align:center;
+  background-color: #3399ff;
+  font-family: Consolas, Liberation Mono, Menlo, Courier, monospace;
+  .description {
+      vertical-align: super;
+  }
 }
 
 .main-content>div {

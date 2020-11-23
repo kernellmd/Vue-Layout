@@ -1,5 +1,6 @@
 <template>
-    <mu-content-block>
+    <mu-content-block style="background-color:#ccffff;">
+      <div style="border-bottom:2px solid #ff3399"><span>属性：</span></div>
         <subAttribute v-if="current" :attributes="current.attributes" style="margin-left:-10px;" @update="updateAttribute" />
     </mu-content-block>
 </template>
